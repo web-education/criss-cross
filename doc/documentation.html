@@ -1,0 +1,261 @@
+<!doctype html>
+<head>
+	<title>Crisscross</title>
+	<link rel="stylesheet" type="text/css" href="../crisscross.css" />
+
+	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<link rel="stylesheet" type="text/css" href="html-theme.css" />
+	<style type="text/css">
+		@media only screen and (max-width: 720px) {
+		   .grid-exemple.row .box, .grid-exemple.row .absolute { 
+				font-size: 14px !important;			
+		   }
+		}
+		
+		@media only screen and (max-width: 500px) {
+		   .grid-exemple.row .box, .grid-exemple.row .absolute { 
+				font-size: 12px !important;				
+		   }
+		}
+		
+		body{
+			max-width: 960px;
+			min-width: 460px;
+			margin-left: auto;
+			font-family: sans-serif;
+			margin-right: auto;
+			text-align: justify;
+		}
+		.grid-exemple.row .box, .grid-exemple.row .absolute{
+			font-size: 16px;
+			padding: 10px;
+			color: #888;
+			border: #fff solid 5px;
+			border-radius: 12px;
+			background: #eee;
+			text-align: left;
+		}
+		pre{
+			border: #fff solid 5px !important;
+			border-radius: 12px;	
+		}
+		h2, h1{
+			padding-top: 35px;
+		}
+		label{
+			background: #2d2d2d;
+			color: #66cccc;
+			font-family: monospace;
+			padding: 2px;
+			padding-left: 5px;
+			padding-right: 5px;
+			border-radius: 4px;
+		}
+	</style>
+</head>
+<body>
+	<h1 class="row" style="padding-top: 0">A new dimension</h1>
+	
+	<div class="row">
+		<p>The popularity of CSS grids have been increasing steadily over the past years. They bring balance to our pages, and help us build 
+		interfaces more quickly. 
+		Most grids are one-dimensional: you specify their width and they adapt in height to their content.</p>
+		<p>Crisscross, however, is two-dimensional: you can specify both width and height, relative to the width of the container.<p>
+	</div>
+
+	<div class="grid-exemple row">
+		<div class="six cell height-six">
+			<div class="absolute cell">Six cell height-six</div>
+		</div>
+		<div class="six cell height-three">
+			<div class="absolute cell">Six cell height-three</div>
+		</div>
+		<div class="six cell height-three">
+			<div class="absolute cell">Six cell height-three</div>
+		</div>
+		
+	</div>
+	<div class="grid-exemple row">
+		<div class="twelve cell height-one">
+			<div class="absolute cell">Twelve cell height-one</div>
+		</div>
+	</div>
+	<div class="grid-exemple row">
+		<div class="two cell height-two">
+			<div class="absolute cell">Two cell height-two</div>
+		</div>
+		<div class="ten cell box">
+			Ten cell, no height
+			<p>Those are the usual grid cells. They will adapt to the height of the content.</p>
+			<p>Adding a height-* block inside one of those will also extend it.</p>
+			<div class="row">
+				<div class="twelve cell height-two">
+					<div class="absolute cell" style="background: #fff; color: #ccc">Twelve cell height-two</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<h1 class="row">How to use</h1>
+	
+	<h2 style="padding-top: 0">Classic grid</h2>
+	
+	<div class="row">
+		<p>The <label>row</label> class will start a new <label>row</label> containing cells. Every <label>cell</label> must specify a width ranging from 
+		<label>one</label> to <label>twelve</label>.</p>
+		<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+	  &lt;div class=&quot;two cell&quot;&gt;Two cell&lt;/div&gt;
+  	  &lt;div class=&quot;ten cell&quot;&gt;Ten cell&lt;/div&gt;
+  &lt;/div&gt;
+		</pre>
+	</div>
+	
+	<div class="row grid-exemple">
+		<div class="two cell box">Two cell</div>
+		<div class="ten cell box">Ten cell</div>
+	</div>
+	
+	<h2 class="row">Two dimensional grid</h2>
+	
+	<div class="row">
+		<p>Adding a height, ranging from <label>height-one</label> to <label>height-twelve</label>, will give the container a height depending on the container's width.
+		This means that a <label>three cell height-three</label> block is a square.</p>
+		<p>The content inside a height-* block must be wrapped in a absolute cell block.</p>
+		</p>
+		<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+	  &lt;div class=&quot;two cell height-two&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Two cell height-two&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;ten cell height-two&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Ten cell height-two&lt;/div&gt;
+	  &lt;/div&gt;
+  &lt;/div&gt;
+		</pre>
+	</div>
+	
+	<div class="grid-exemple row">
+		<div class="row">
+			<div class="two cell height-two">
+				<div class="absolute cell">Two cell height-two</div>
+			</div>
+			<div class="ten cell height-two">
+				<div class="absolute cell">Ten cell height-two</div>
+			</div>
+		</div>
+	</div>
+	
+	<h2 class="row">Mixed lines</h2>
+	
+	<div class="row">
+		When blocks width add up to more than twelve, the last block falls under its predecessor.
+		<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+	  &lt;div class=&quot;two cell height-two&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Two cell height-two&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;ten cell height-one&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Ten cell height-one&lt;/div&gt;
+	  &lt;/div&gt;
+	  &lt;div class=&quot;ten cell height-one&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Ten cell height-one&lt;/div&gt;
+	  &lt;/div&gt;
+  &lt;/div&gt;
+		</pre>		
+	</div>
+	
+	<div class="grid-exemple row">
+		<div class="row">
+			<div class="two cell height-two">
+				<div class="absolute cell">Two cell height-two</div>
+			</div>
+			<div class="ten cell height-one">
+				<div class="absolute cell">Ten cell height-one</div>
+			</div>
+			<div class="ten cell height-one">
+				<div class="absolute cell">Ten cell height-one</div>
+			</div>
+		</div>
+	</div>
+	
+	<h2 class="row">Known issues</h2>
+	
+	<div class="row">
+		Sadly, adding a padding to a height-* block will break it. You need to set the padding to a wrapper, to the <label>absolute</label> cell inside your block, or work with margins.
+	</div>
+	<div class="row">
+		This will <strong>break</strong>:
+	</div>
+	
+	<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+	  &lt;div class=&quot;twelve cell height-two&quot; style=&quot;padding:15px&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot;&gt;Twelve cell height-two&lt;/div&gt;
+	  &lt;/div&gt;
+  &lt;/div&gt;
+	</pre>
+	
+	<div class="grid-exemple row">
+		<div class="row">
+			<div class="twelve cell height-two" style="padding: 15px">
+				<div class="absolute cell">Twelve cell height-two with 15px padding</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="height-one twelve cell"></div>
+	</div>
+	
+	<div class="row">
+		This will <strong>work</strong>:
+	</div>
+	
+	<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+	  &lt;div class=&quot;twelve cell height-two&quot;&gt;
+		  &lt;div class=&quot;absolute cell&quot; style=&quot;padding:15px&quot;&gt;Twelve cell height-two, 15px padding in absolute cell&lt;/div&gt;
+	  &lt;/div&gt;
+  &lt;/div&gt;
+	</pre>
+	
+	<div class="grid-exemple row">
+		<div class="row">
+			<div class="twelve cell height-two">
+				<div class="absolute cell" style="padding: 15px">Twelve cell height-two, 15px padding in absolute cell</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row">
+		This will <strong>work</strong> as well:
+	</div>
+	
+	<pre class="row prettyprint">
+		
+  &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;twelve cell&quot; style=&quot;padding:15px;background:#333;&quot;&gt;
+	      &lt;div class=&quot;twelve cell height-two&quot;&gt;
+		      &lt;div class=&quot;absolute cell&quot;&gt;Twelve cell height-two, 15px padding in a wrapper cell&lt;/div&gt;
+	      &lt;/div&gt;
+        &lt;/div&gt;
+  &lt;/div&gt;
+	</pre>
+	
+	<div class="grid-exemple row">
+		<div class="row">
+			<div class="twelve cell" style="padding: 15px; background: #333; border: 5px solid #fff">
+				<div class="twelve cell height-two">
+					<div class="absolute cell" style="border: none;">Twelve cell height-two, 15px padding in a wrapper cell</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
